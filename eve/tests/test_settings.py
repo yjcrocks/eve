@@ -227,6 +227,19 @@ users_overseas = copy.deepcopy(users)
 users_overseas['url'] = 'users/overseas'
 users_overseas['datasource'] = {'source': 'contacts'}
 
+users_aggregation = copy.deepcopy(users)
+users_aggregation['url'] = 'users/aggrergation'
+users_aggregation['datasource'] = {
+    'source': 'contacts',
+    'aggregation': {
+        'pipeline': [
+            {'$match': None},
+            {'$sort': None},
+            {'$group': None}
+        ]
+    }
+}
+
 payments = {
     'resource_methods': ['GET'],
     'item_methods': ['GET'],

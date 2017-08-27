@@ -373,3 +373,10 @@ class TestEndPoints(TestBase):
         r = self.test_client.get(known_schema_path)
         self.assert200(r.status_code)
         self.assertEqual(json.loads(r.data)['lambda']['coerce'], '<callable>')
+
+    def test_aggregation_endpoint(self):
+        """ Test that the aggregation endpoint is correctly parsed into mongodb
+        query, replacing keys in nested data structure (#1025)
+        """
+        r = self.test_client.get('/users/aggregation')
+        self.assert200(r.status_code)
